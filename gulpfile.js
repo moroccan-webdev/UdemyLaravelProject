@@ -1,4 +1,4 @@
-const elixir = require('laravel-elixir');
+var elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
 
@@ -15,5 +15,17 @@ require('laravel-elixir-vue-2');
 
 elixir((mix) => {
     mix.sass('app.scss')
-       .webpack('app.js');
+       .styles(['bootstrap.css',
+               'bootstrap.min.css',
+               'bootstrap-theme.min.css',
+               'sb-admin-2.css',
+               'timeline.css'
+             ],'./public/css/libs.css')
+
+        .scripts(['app.js',
+                  'bootstrap.js',
+                  'sb-admin-2.js',
+                  'bootstrap.min.css',
+                  'npm.js'
+               ],'./public/js/libs.js')
 });

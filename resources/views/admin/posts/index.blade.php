@@ -5,17 +5,7 @@ this is it
 <div class="container">
     <div class="row">
       <div class="col-md-2">
-          <div class="panel panel-default">
-              <div class="panel-heading">Dashboard</div>
-              <div class="panel-body">
-                  <ol>
-                    <li><a href="{{ route('users.index')}}">All Users</a></li>
-                    <li><a href="{{ route('users.create')}}">New Users</a></li>
-                    <li><a href="{{ route('users.index')}}">New Users</a></li>
-                    <li><a href="{{ route('posts.create')}}">New Users</a></li>
-                  </ol>
-              </div>
-          </div>
+          @include('includes.sidebar')
         </div>
         <div class="col-md-10">
             <div class="panel panel-default">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-this is it 
+this is it
 <div class="container">
     <div class="row">
       <div class="col-md-2">
@@ -34,7 +34,7 @@ this is it
                           <td>Body</td>
                           <td>Created</td>
                           <td>Updated</td>
-
+                          <td>Actions</td>
                         </tr>
                       </tr>
                     </thead>
@@ -43,14 +43,20 @@ this is it
                         @foreach($posts as $post)
                           <tr>
                             <td>{{$post->id}}</td>
-                            <td>{{$post->user->name}}</td>
-                            <td>{{$post->category_id}}</td>
+                            <td><a href="{{route('posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
+                            <td>{{$post->category ? $post->category->name : 'Not Exist' }}</td>
                             <td>{{$post->photo_id}}</td>
                             <td>{{$post->title}}</td>
-                            <td>{{$post->body}}</td>
+                            <td>{{str_limit($post->body,25)}}</td>
                             <td>{{$post->created_at->diffForHumans()}}</td>
                             <td>{{$post->updated_at->diffForHumans()}}</td>
-
+                            <td>
+              							<div class="btn-xs" style="display:inline-block">
+              								{!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'DELETE']) !!}
+              								<button type="submit" class="btn btn-danger btn-xs">delete</button>
+              								{!! Form::close() !!}
+              							</div>
+              						</td>
                           </tr>
                         @endforeach
                       @endif

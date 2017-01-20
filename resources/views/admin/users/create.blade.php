@@ -44,7 +44,7 @@
                       {!! form::file('photo_id',['class'=>'form-control'])!!}
                     </div>
                     <div class="form-group">
-                      {!! form::submit('Create Post', ['class'=>'btn btn-primary'])!!}
+                      {!! form::submit('Create User', ['class'=>'btn btn-primary'])!!}
                     </div>
                   {!! Form::close() !!}
 

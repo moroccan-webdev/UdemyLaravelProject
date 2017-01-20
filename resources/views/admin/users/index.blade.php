@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-2">
           <div class="panel panel-default">
               <div class="panel-heading">Dashboard</div>
               <div class="panel-body">
@@ -14,7 +14,7 @@
               </div>
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
 
@@ -24,6 +24,7 @@
                       <tr>
                         <tr>
                           <td>Id</td>
+                          <td>Photo</td>
                           <td>Name</td>
                           <td>Email</td>
                           <td>Role</td>
@@ -38,7 +39,8 @@
                         @foreach($users as $user)
                           <tr>
                             <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
+                            <td>{{$user->photo ? $user->photo->file: 'Not Exist'}}</td>
+                            <td><a href="{{route('users.edit',$user->id)}}">{{$user->name}}</a></td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->role->name}}</td>
                             <td>{{$user->is_active == 1 ? 'Active': 'Not Active'}}</td>

@@ -58,6 +58,8 @@ class AdminUsersController extends Controller
           $user->role_id = $request->role_id;
           $user->is_active = $request->is_active;
           $user->save();
+
+          return redirect()->route('users.index');
     }
 
     /**
@@ -79,7 +81,9 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::pluck('name', 'id')->all();
+        return view('admin.users.edit',compact('user','roles'));
     }
 
     /**
@@ -89,9 +93,25 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsersCreateRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        if($file = $request->file('photo_id')){
+            $name = time().$file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            //$înput['photo_id'] = $photo->id;
+            $user->photo_id = $photo->id;
+        }
+        $user->password = bcrypt($request->password);
+        //User::create($input);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role_id = $request->role_id;
+        $user->is_active = $request->is_active;
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**

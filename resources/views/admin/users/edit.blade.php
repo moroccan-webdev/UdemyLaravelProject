@@ -10,6 +10,8 @@
                   <ol>
                     <li><a href="{{ route('users.index')}}">All Users</a></li>
                     <li><a href="{{ route('users.create')}}">New Users</a></li>
+                    <li><a href="{{ route('users.index')}}">New Users</a></li>
+                    <li><a href="{{ route('posts.create')}}">New Users</a></li>
                   </ol>
               </div>
           </div>

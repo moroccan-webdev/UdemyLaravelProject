@@ -31,6 +31,7 @@
                           <td>Status</td>
                           <td>Created</td>
                           <td>Updated</td>
+                          <td>Actions</td>
                         </tr>
                       </tr>
                     </thead>
@@ -46,6 +47,13 @@
                             <td>{{$user->is_active == 1 ? 'Active': 'Not Active'}}</td>
                             <td>{{$user->created_at->diffForHumans()}}</td>
                             <td>{{$user->updated_at->diffForHumans()}}</td>
+                            <td>
+              							<div class="btn-xs" style="display:inline-block">
+              								{!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE']) !!}
+              								<button type="submit" class="btn btn-danger btn-xs">delete</button>
+              								{!! Form::close() !!}
+              							</div>
+              						</td>
                           </tr>
                         @endforeach
                       @endif

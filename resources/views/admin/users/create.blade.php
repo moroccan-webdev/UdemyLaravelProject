@@ -3,7 +3,18 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-4">
+          <div class="panel panel-default">
+              <div class="panel-heading">Dashboard</div>
+              <div class="panel-body">
+                  <ol>
+                    <li><a href="{{ route('users.index')}}">All Users</a></li>
+                    <li><a href="{{ route('users.create')}}">New Users</a></li>
+                  </ol>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
                 <div class="panel-body">
@@ -29,8 +40,8 @@
                       {!! form::password('password',['class'=>'form-control'])!!}
                     </div>
                     <div class="form-group">
-                      {!! form::label('file', 'File : ') !!}
-                      {!! form::file('file',['class'=>'form-control'])!!}
+                      {!! form::label('photo_id', 'File : ') !!}
+                      {!! form::file('photo_id',['class'=>'form-control'])!!}
                     </div>
                     <div class="form-group">
                       {!! form::submit('Create Post', ['class'=>'btn btn-primary'])!!}
